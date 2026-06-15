@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>올리브영 PB 리스닝마인드 대시보드 - 립틴트 & 베이스메이크업</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Noto Sans JP", sans-serif; }
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 1.25rem; }
+  .badge { display:inline-block; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 999px; }
+  .tab-btn.active { background:#fff; color:#e11d48; border-color:#e11d48; }
+  .cep-body { display:none; }
+  .cep-card.open .cep-body { display:block; }
+  .cep-card.open .chevron { transform: rotate(180deg); }
+  .chevron { transition: transform .2s; }
+  pre { white-space: pre-wrap; font-family: inherit; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+<header class="bg-gradient-to-r from-rose-500 to-pink-500 text-white sticky top-0 z-50 shadow">
+  <div class="max-w-7xl mx-auto px-4 py-4">
+    <div class="text-xs uppercase tracking-wider opacity-80">올리브영 PB · 일본 리스닝마인드 조사</div>
+    <h1 class="text-xl md:text-2xl font-extrabold">립 메이크업(Colorgram) &amp; 베이스 메이크업(Wakemake) 반등포인트 대시보드</h1>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 py-6 space-y-8">
+
+  <!-- 처음 보는 분을 위한 안내 -->
+  <section class="card bg-sky-50 border-sky-100 text-sm leading-relaxed">
+    <div class="font-bold text-sky-700 mb-2">📖 이 대시보드 보는 법 (마케팅 처음이신 분도 OK)</div>
+    <ul class="list-disc list-inside space-y-1 text-slate-600">
+      <li><b>CEP(Category Entry Point, 카테고리 진입 시점)</b>: 소비자가 "이런 상황이라면 이 제품이 필요해!"라고 떠올리는 구체적인 순간을 말합니다. 예) "장마철 습한 날 메이크업이 무너질까봐 걱정될 때"</li>
+      <li><b>SKU(Stock Keeping Unit)</b>: 같은 카테고리(예: 립틴트) 안에서 서로 다른 특징을 가진 개별 제품을 의미합니다.</li>
+      <li><b>반등포인트</b>: 매출이 정체된 제품을 다시 끌어올릴 수 있는 메시지/포지셔닝 아이디어입니다.</li>
+      <li>각 CEP 카드를 클릭하면 "어떤 상황 → 어떤 제품 강점 → 어떤 광고 문구로 연결할지"까지 한 번에 펼쳐집니다.</li>
+    </ul>
+  </section>
+
+  <!-- 전체 핵심 인사이트 -->
+  <section>
+    <h2 class="text-lg font-bold mb-3">🔑 두 카테고리를 관통하는 공통 인사이트</h2>
+    <div class="card bg-slate-900 text-white">
+      <div class="text-xs font-bold text-rose-300 mb-1">공통 키워드</div>
+      <div class="text-xl md:text-2xl font-extrabold leading-snug">"예쁜 색·예쁜 피부"보다 <span class="text-rose-300">"하루 종일 안 무너짐"</span></div>
+      <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+        립틴트(컬러커버틴트 등)와 베이스메이크업(철벽베이스 등) 모두에서, 일본 소비자는 색감/트렌드보다 <b>지속력·밀착력·번짐 방지</b>를 가장 먼저 고민합니다.
+        고온다습한 기후, 긴 장마, 마스크 착용 문화가 공통 배경입니다. 두 카테고리 모두 "트렌드를 따라가는 제품"이 아니라 "일상의 불편함을 해결하는 기능성 제품"으로 소비되고 있습니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- 탭 -->
+  <section>
+    <div class="flex gap-2 border-b border-slate-200">
+      <button class="tab-btn active px-4 py-2 font-bold border-b-2 border-transparent rounded-t-lg" data-tab="lip">💋 립 틴트 (Colorgram)</button>
+      <button class="tab-btn px-4 py-2 font-bold border-b-2 border-transparent rounded-t-lg text-slate-500" data-tab="base">🧴 베이스 메이크업 (Wakemake)</button>
+    </div>
+  </section>
+
+  <!-- ============ 립 틴트 탭 ============ -->
+  <section id="tab-lip" class="space-y-8">
+
+    <!-- SKU 소개 -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">Colorgram 립틴트 SKU 4종</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="card"><div class="font-bold mb-1">컬러커버틴트</div><div class="text-sm text-slate-500">커버, 발색, 착색</div></div>
+        <div class="card"><div class="font-bold mb-1">탕후루 딥 글레이즈</div><div class="text-sm text-slate-500">광택, 글로우</div></div>
+        <div class="card"><div class="font-bold mb-1">누디블러틴트</div><div class="text-sm text-slate-500">립 베이스, MLBB, 블러</div></div>
+        <div class="card"><div class="font-bold mb-1">탕후루 밀크</div><div class="text-sm text-slate-500">밀키, 광택</div></div>
+      </div>
+      <p class="text-xs text-slate-400 mt-2">같은 "립틴트" 카테고리라도 SKU별로 제품 포지션이 다르기 때문에, 아래 CEP(소비자 상황)별로 어떤 SKU를 연결할지 정리했습니다.</p>
+    </div>
+
+    <!-- 검색량 분석 -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">최근 6개월 검색량 분석</h2>
+      <div class="card mb-3">
+        <p class="text-sm leading-relaxed text-slate-600">
+          틴트/립틴트 관련 주요 키워드 검색량은 전반적으로 <b class="text-rose-500">감소 또는 정체</b> 흐름입니다.
+          다만 아래 일부 제품은 검색량이 급증했는데, 이들의 공통점을 분석한 결과 <b>"화제성/신제품/콜라보"</b>가 핵심 동력이었습니다.
+        </p>
+      </div>
+      <div class="card overflow-x-auto">
+        <table class="w-full text-sm min-w-[600px]">
+          <thead><tr class="text-left text-slate-400 border-b">
+            <th class="py-2 pr-4">월평균 검색량</th><th class="py-2 pr-4">키워드</th><th class="py-2 pr-4">브랜드</th><th class="py-2 pr-4">성장률</th><th class="py-2">비고</th>
+          </tr></thead>
+          <tbody class="text-slate-600">
+            <tr class="border-b"><td class="py-2 pr-4 font-bold">12,566</td><td class="py-2 pr-4">ヒーロー リップ タトゥー ティント</td><td class="py-2 pr-4">에이프릴스킨</td><td class="py-2 pr-4"><span class="badge bg-emerald-100 text-emerald-600">+678%</span></td><td class="py-2"></td></tr>
+            <tr class="border-b"><td class="py-2 pr-4 font-bold">7,100</td><td class="py-2 pr-4">グロウロックゼリーティント</td><td class="py-2 pr-4">코랄헤이즈</td><td class="py-2 pr-4"><span class="badge bg-emerald-100 text-emerald-600">+1,018%</span></td><td class="py-2"></td></tr>
+            <tr class="border-b text-slate-400"><td class="py-2 pr-4 font-bold">5,866</td><td class="py-2 pr-4">ラロッシュポゼ ティント</td><td class="py-2 pr-4">-</td><td class="py-2 pr-4"><span class="badge bg-slate-100 text-slate-400">+650%</span></td><td class="py-2 text-xs">틴트 아닌 제품명 - 무관</td></tr>
+            <tr class="text-slate-400"><td class="py-2 pr-4 font-bold">4,566</td><td class="py-2 pr-4">ファシオ BBティント</td><td class="py-2 pr-4">-</td><td class="py-2 pr-4"><span class="badge bg-slate-100 text-slate-400">+125%</span></td><td class="py-2 text-xs">BB크림 제품 - 무관</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 트렌드 리서치 -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">트렌드 리서치 - 최근 화제가 된 이유</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="card border-l-4 border-rose-400">
+          <div class="text-xs text-slate-400 mb-1">2026-06-02</div>
+          <div class="font-bold mb-1">밀크터치 × 패밀리마트 한정 립틴트</div>
+          <p class="text-sm text-slate-600 leading-relaxed">패밀리마트 한정 미니 사이즈 립틴트 출시. 퍼스널컬러 기반 컬러 구성 + 휴대성 강조.</p>
+          <div class="text-xs font-semibold text-rose-500 mt-2">시사점: 한정판·미니사이즈·퍼스널컬러 맞춤 제안이 소비자 관심 유도</div>
+        </div>
+        <div class="card border-l-4 border-amber-400">
+          <div class="text-xs text-slate-400 mb-1">2026-05-22</div>
+          <div class="font-bold mb-1">메자마시 테레비 "맛있는 립" fwee 화제</div>
+          <p class="text-sm text-slate-600 leading-relaxed">TV 프로그램에서 fwee 틴트 소개. 데코/씰 커스텀 가능 + "바나나 딸기 스무디 맛"으로 화제.</p>
+          <div class="text-xs font-semibold text-rose-500 mt-2">시사점: 제품 자체를 하나의 "콘텐츠"로 즐기는 경험 요소</div>
+        </div>
+        <div class="card border-l-4 border-sky-400">
+          <div class="text-xs text-slate-400 mb-1">2026-06-01</div>
+          <div class="font-bold mb-1">3CE 오일틴트 신제품</div>
+          <p class="text-sm text-slate-600 leading-relaxed">「ガミーオイルティント」 출시. 투명한 광택막(クリアなツヤ膜) + 오일 베이스 촉촉함 강조.</p>
+          <div class="text-xs font-semibold text-rose-500 mt-2">시사점: 발색력보다 광택감(ツヤ)·촉촉함이 최근 인기 키워드</div>
+        </div>
+      </div>
+      <div class="card mt-3 bg-slate-900 text-white">
+        <div class="font-bold mb-1 text-rose-300">전체 요약</div>
+        <p class="text-sm leading-relaxed">최근 일본 립틴트 시장은 단순 발색력/착색력 경쟁보다, <b>화제성·경험 요소·광택감 있는 립 표현</b>이 주목받는 중입니다.
+        밀크터치는 한정판/접근성, fwee는 커스터마이징/콘텐츠화, 3CE는 투명 광택 오일 제형으로 각자 차별화하고 있으며, 광택 립 표현은 여름 시즌 니즈와도 연결될 가능성이 있습니다.</p>
+      </div>
+    </div>
+
+    <!-- CEP -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">CEP (카테고리 진입 시점) 10가지 - 클릭해서 펼쳐보세요</h2>
+      <div id="lip-cep-list" class="space-y-2"></div>
+    </div>
+
+    <!-- 검색 여정 지도 -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">검색 여정 지도 (클러스터)</h2>
+      <div class="card overflow-x-auto">
+        <table class="w-full text-sm min-w-[700px]">
+          <thead><tr class="text-left text-slate-400 border-b">
+            <th class="py-2 pr-4">클러스터 (검색량)</th><th class="py-2 pr-4">TOP3 키워드</th><th class="py-2 pr-4">발견 내용</th><th class="py-2">CG 시사점</th>
+          </tr></thead>
+          <tbody class="text-slate-600">
+            <tr class="border-b">
+              <td class="py-2 pr-4 font-bold whitespace-nowrap">립틴트 종류 비교<br><span class="text-rose-500">(18,468)</span></td>
+              <td class="py-2 pr-4 text-xs">ティント リップ (11,366)<br>リップティント おすすめ (3,866)<br>ティントとグロスの違い (686)</td>
+              <td class="py-2 pr-4">종류·추천·제형 차이에 대한 비교 탐색</td>
+              <td class="py-2">제품 스펙보다 사용 목적/상황별 추천 소구 활용</td>
+            </tr>
+            <tr class="border-b">
+              <td class="py-2 pr-4 font-bold whitespace-nowrap">립틴트 선택과 비교<br><span class="text-rose-500">(15,011)</span></td>
+              <td class="py-2 pr-4 text-xs">リップ ティント (8,200)<br>ティント グロス 違い (823)<br>グロス ティント 違い (730)</td>
+              <td class="py-2 pr-4">틴트와 글로스의 차이를 알고 싶어하는 니즈 큼</td>
+              <td class="py-2">각 SKU의 제형 차이를 명확히 설명 필요</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4 font-bold whitespace-nowrap">안 지워지는 인기 립틴트<br><span class="text-rose-500">(11,805)</span></td>
+              <td class="py-2 pr-4 text-xs">ティント (9,300)<br>ティント 落ちないリップ (1,700)<br>ティント人気 (323)</td>
+              <td class="py-2 pr-4">지속력 수요 명확. 경쟁브랜드 haomii도 함께 탐색됨</td>
+              <td class="py-2">색·트렌드보다 지속력 관점으로 접근</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="text-xs text-slate-400 mt-2">※ "眉リップ色持ち比較"는 눈썹 타투 관련 클러스터로 제외. "ティント"는 한국보다 넓은 의미(착색)로 쓰이는 점 참고.</p>
+      </div>
+    </div>
+
+    <!-- 종합 요약 -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">립틴트 종합 인사이트</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="card border-l-4 border-rose-500">
+          <div class="font-bold mb-1">① "예쁜 색"보다 "안 지워짐"</div>
+          <p class="text-sm text-slate-600 leading-relaxed">CEP 10개 모두 "色移り(색 묻음)·落ちにくい(잘 안 지워짐)·直せない前提(고칠 수 없는 전제)"로 수렴. 베이스 메이크업과 동일한 패턴 - 고온다습 기후·마스크 문화 영향.</p>
+        </div>
+        <div class="card border-l-4 border-amber-400">
+          <div class="font-bold mb-1">② 진입점은 "컬러"가 아닌 "상황 대응"</div>
+          <p class="text-sm text-slate-600 leading-relaxed">컬러·무드·트렌드가 진입점인 CEP는 없음. 전부 접객·근무·식사·땀·사진·마스크 등 생활 상황이 트리거 - 기능성 중심 소비.</p>
+        </div>
+        <div class="card border-l-4 border-sky-400">
+          <div class="font-bold mb-1">③ 반등은 "비교·추천전 승리"에서</div>
+          <p class="text-sm text-slate-600 leading-relaxed">새 수요 창출보다 "어떤 틴트가 좋은지" 비교받는 단계에서 선택받을 명확한 이유 제시가 핵심. 검색량 TOP3 CEP(접객근무/데이트식사/땀)에 자원 집중 권장.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 베이스 메이크업 탭 ============ -->
+  <section id="tab-base" class="space-y-8 hidden">
+
+    <!-- 검색량 분석 -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">최근 6개월 검색량 분석</h2>
+      <div class="card mb-3">
+        <p class="text-sm leading-relaxed text-slate-600 mb-3">
+          베이스 메이크업 카테고리 키워드 검색량은 최근 6개월간 <b class="text-rose-500">소폭 하락</b>. WM 주요 SKU(파운데이션, 파운데이션 브러시 등) 검색량도 유의미한 증가 없음.
+          韓国ベースメイク 검색량도 증가하지 않아, 여름 시즌 진입에 따른 카테고리 전반의 관심 확대로 보기 어려움.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="rounded-lg bg-rose-50 p-3 text-sm"><span class="text-rose-500 font-bold">❌</span> 베이스 메이크업 카테고리 자체 성장</div>
+          <div class="rounded-lg bg-rose-50 p-3 text-sm"><span class="text-rose-500 font-bold">❌</span> 한국 베이스 메이크업 관심 증가</div>
+          <div class="rounded-lg bg-rose-50 p-3 text-sm"><span class="text-rose-500 font-bold">❌</span> 장마 시즌 진입 검색 수요 폭증 (梅雨メイク +266%이나 월 56건 → 미미)</div>
+        </div>
+        <p class="text-sm text-slate-600 leading-relaxed mt-3">
+          따라서 검색량 기반 "시장 성장 요인"을 찾기보다, 소비자가 베이스 메이크업을 탐색하는 상황(CEP)과 선택 요소를 중심으로 분석을 진행했습니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- CEP -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">CEP (카테고리 진입 시점) 9가지 - 클릭해서 펼쳐보세요</h2>
+      <div id="base-cep-list" class="space-y-2"></div>
+    </div>
+
+    <!-- 트렌드 -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">베이스 메이크업 트렌드 조사</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="card border-l-4 border-rose-400">
+          <div class="text-xs text-slate-400 mb-1">2026-05</div>
+          <div class="font-bold mb-1">메이블린 SPステイ 캠페인</div>
+          <p class="text-sm text-slate-600 leading-relaxed">야마다 료스케를 앰버서더로 루미매트 리퀴드 파운데이션 등 집중 노출 (X 조회수 24.7만).</p>
+          <div class="text-xs font-semibold text-rose-500 mt-2">시사점: "지속력(Stay)"을 핵심 가치로 소구 - CEP의 "무너지지 않는 피부" 니즈와 일치</div>
+        </div>
+        <div class="card border-l-4 border-amber-400">
+          <div class="text-xs text-slate-400 mb-1">2026-06</div>
+          <div class="font-bold mb-1">KAI × 드래곤퀘스트 메이크업 퍼프 협업</div>
+          <p class="text-sm text-slate-600 leading-relaxed">슬라임 캐릭터 3D 퍼프 출시. 물 흡수 시 팽창 + 파운데이션 흡수력 차별화.</p>
+          <div class="text-xs font-semibold text-rose-500 mt-2">시사점: 파운데이션뿐 아니라 도구(브러시·퍼프)로 완성도 개선하려는 니즈</div>
+        </div>
+        <div class="card border-l-4 border-sky-400">
+          <div class="text-xs text-slate-400 mb-1">2026-06</div>
+          <div class="font-bold mb-1">밀크터치 리퀴드 파운데이션 출시</div>
+          <p class="text-sm text-slate-600 leading-relaxed">"올데이 스킨핏", "밀키 글로우" 강조. 두꺼운 커버보다 맑고 자연스러운 피부 표현.</p>
+          <div class="text-xs font-semibold text-rose-500 mt-2">시사점: 강한 커버력보다 얇고 균일한 피부 표현 + 보습 유지 흐름. Amazon재팬에서 WM 파운데이션 브러시가 "함께 구매" 상품으로 노출됨 - 도구 동반구매 성향 확인</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 검색 여정 지도 -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">검색 여정 지도 (클러스터)</h2>
+      <div class="card overflow-x-auto">
+        <table class="w-full text-sm min-w-[700px]">
+          <thead><tr class="text-left text-slate-400 border-b">
+            <th class="py-2 pr-4">클러스터 (검색량)</th><th class="py-2 pr-4">TOP3 키워드</th><th class="py-2 pr-4">발견 내용</th><th class="py-2">WM 시사점</th>
+          </tr></thead>
+          <tbody class="text-slate-600">
+            <tr class="border-b">
+              <td class="py-2 pr-4 font-bold whitespace-nowrap">베이스 메이크업 기초 순서 가이드<br><span class="text-rose-500">(57,271)</span></td>
+              <td class="py-2 pr-4 text-xs">メイクの順番 (25,833)<br>化粧の順番 (10,033)<br>ベースメイクの順番 (4,200)</td>
+              <td class="py-2 pr-4">올바른 사용 순서/방법에 가장 큰 관심. 스킨케어→선케어→베이스→파운데이션 루틴 탐색 비중 높음</td>
+              <td class="py-2">"어떤 제품이 좋은가"보다 "어떻게 써야 안 무너지는가" - 제품 단독보다 루틴 관점 접근</td>
+            </tr>
+            <tr class="border-b">
+              <td class="py-2 pr-4 font-bold whitespace-nowrap">베이스 메이크업 입문·선택방법<br><span class="text-rose-500">(8,303)</span></td>
+              <td class="py-2 pr-4 text-xs">ベースメイクとは (2,066)<br>ベースメイク おすすめ (1,500)<br>ベース メイク プチプラ (1,400)</td>
+              <td class="py-2 pr-4">입문 단계에서 제품 종류/추천/가격대별 탐색</td>
+              <td class="py-2">트렌드 제품보다 "실패 없는" 베이스 솔루션 제안 + 상황별 추천</td>
+            </tr>
+            <tr class="border-b">
+              <td class="py-2 pr-4 font-bold whitespace-nowrap">SHIRO 브랜드 연관 클러스터<br><span class="text-rose-500">(18,188)</span></td>
+              <td class="py-2 pr-4 text-xs">ベースメイク (17,000)<br>コンシーラー リキッド (920)<br>shiro ファンデーション (76)</td>
+              <td class="py-2 pr-4">특정 베이스 브랜드 중심 탐색 수요</td>
+              <td class="py-2">경쟁 브랜드 탐색 흐름 - WM SKU와 직접 연결성은 낮음</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4 font-bold whitespace-nowrap">남성 베이스 기초 가이드<br><span class="text-rose-500">(9,680)</span></td>
+              <td class="py-2 pr-4 text-xs">メンズ メイク 順番 (1,800)<br>メンズメイク アイシャドウ (1,700)<br>メンズメイク気持ち悪い (1,300)</td>
+              <td class="py-2 pr-4">남성 소비자 수요 존재, 입문 단계 키워드 중심</td>
+              <td class="py-2">직접 연관성은 낮으나 향후 타겟 확장 시 참고</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 종합 요약 -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">베이스 메이크업 종합 인사이트</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="card border-l-4 border-rose-500">
+          <div class="font-bold mb-1">① "모공"보다 "지속력"을 먼저 고민</div>
+          <p class="text-sm text-slate-600 leading-relaxed">모공 커버·피부결 보정보다 밀착력·지속력·무너짐 방지 니즈가 더 큼. 일본의 고온다습 기후, 긴 장마, 마스크 문화가 배경.</p>
+        </div>
+        <div class="card border-l-4 border-amber-400">
+          <div class="font-bold mb-1">② "커버력"보다 "얇고 균일한 피부"</div>
+          <p class="text-sm text-slate-600 leading-relaxed">"완벽한 피부 표현/커버력"보다 "정돈되고 깔끔한 피부"에 대한 니즈가 더 강함.</p>
+        </div>
+        <div class="card border-l-4 border-sky-400">
+          <div class="font-bold mb-1">③ 트렌드 카테고리 아닌 "일상 문제 해결" 카테고리</div>
+          <p class="text-sm text-slate-600 leading-relaxed">특정 스타일/유행 키워드는 거의 없고, 실생활 속 니즈가 다수 발굴됨. WM 기회는 화사한 피부 표현 제안보다 "지금 상태를 하루 종일 유지"하는 지속력 베이스 제안.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center text-xs text-slate-400 py-6 border-t">
+    데이터 출처: 올리브영 PB 리스닝마인드 조사 (립 메이크업 / 베이스 메이크업 반등포인트, 2026)
+  </footer>
+
+</main>
+
+<script>
+const lipCeps = [
+  {id:1, title:"접객업·장시간 근무로 근무 중 립을 덧바를 수 없는 날",
+   context:"· 대화·움직임에도 잘 안 지워지는 타입 우선\n· 퇴근 시까지 색이 유지되는 제품 탐색\n· 묻어남이 적어 청결한 인상을 유지하고 싶음",
+   factors:"· 잘 안 지워지는 지속력\n· 청결감 유지에 유리한 번짐·뭉침 저감\n· 덧바르지 않아도 고르게 발리는 사용감",
+   sku:"컬러커버틴트: 근무 내내 안 지워지는 발색 유지 → 묻어남 적어 청결한 인상\n탕후루 딥 글레이즈: 오래 유지되는 글레이즈 광택으로 생기있는 인상\n누디블러틴트: 한 번 발라 완성되는 입술 보정\n탕후루 밀크: 요플레 현상 방지로 균일한 발색 유지",
+   type:"장시간 근무 대응형", purpose:"덧바를 수 없는 환경에서 발색 유지",
+   points:["장시간 근무 중 발색 지속","덧바름 불필요","청결한 인상 유지"],
+   example:"塗り直せない日も、夕方まで続く発色 / 接客中も崩れない清潔感のある口元"},
+
+  {id:2, title:"데이트 식사 중 입술 화장이 무너져 사진·대화 인상이 나빠질까 걱정되는 때",
+   context:"· 식사 후에도 색이 남는 제품 탐색\n· 식사·대화 중 고치고 싶지 않다는 전제로 선택\n· 사진에 지저분하게 나오지 않는 점 중시",
+   factors:"· 식음 후에도 남는 높은 색 지속력\n· 먹은 뒤에도 지저분하게 지워지지 않음\n· 사진에 예쁘게 나오는 윤기·도톰함",
+   sku:"컬러커버틴트: 묻어남이 적어 식 후에도 청결함 유지\n탕후루 딥 글레이즈: 글레이즈 광택으로 도톰·생기 있는 입술\n누디블러틴트: 블러 보정으로 자연스러운 오버립 연출\n탕후루 밀크: 시간이 지나도 보습·윤기 유지",
+   type:"식사·데이트 대응형", purpose:"식음 상황에서 발색·인상 유지",
+   points:["식사 후 발색 유지","지저분하지 않게 지워짐","사진에 잘 나오는 질감"],
+   example:"食事の後も、きれいに残る血色 / 写真映えする、ふっくら発色"},
+
+  {id:3, title:"라이브·스포츠 관전 등 땀과 마찰이 많은 환경에서 '끝까지 유지하고 싶은' 때",
+   context:"· 땀·움직임에도 잘 안 지워지는 제품 우선 확인\n· 마찰에 강하고 뭉치지 않는 마무리 중시\n· 못 고치는 전제로 색 지속 안정감 탐색",
+   factors:"· 땀·마찰에 강해 잘 안 지워지는 틴트\n· 움직임에도 뭉침 없이 밀착\n· 색 지워짐·번짐을 억제",
+   sku:"컬러커버틴트: 덧 발라도 뭉침없는 마무리감\n탕후루 딥 글레이즈: 한 번 발라도 오래 지속되는 딥글레이즈 광택감\n누디블러틴트: 얇고 가벼운 텍스처로 밀착되어 번짐 억제\n탕후루 밀크: 롱래스팅 윤기로 자연스러운 혈색 유지",
+   type:"액티브·고지속형", purpose:"땀·마찰 환경에서 끝까지 발색 유지",
+   points:["땀·마찰 환경 대응","밀착 지속력","번짐·묻어남 방지"],
+   example:"汗・こすれにも負けない密着発色 / 終わるまで崩れない口元"},
+
+  {id:4, title:"결혼식 피로연에서 마시고 먹는 횟수가 많다는 걸 안 순간 입술 변화가 신경 쓰이는 때",
+   context:"· 식사 중에도 잘 안 지워지는 제품 후보화\n· 사진 촬영까지의 지속 시간 중시해 리뷰 확인\n· 당일 고치는 횟수를 줄이는 전제로 선택",
+   factors:"· 잦은 식사에도 잘 안 지워지는 높은 색 지속력\n· 당일 내내 뭉침·번짐을 억제하는 안정감\n· 리뷰에서 평가받기 쉬운 지속력 타입(틴트/밀착계)",
+   sku:"컬러커버틴트: 가볍게 밀착되어 덧 발라도 뭉침·끼임 없는 마무리감\n탕후루 딥 글레이즈: 오래 지속되는 광택감 / 식후에도 혈색감 유지\n누디블러틴트: 식후에도 유지되는 자연스러운 혈색감\n탕후루 밀크: 빠르게 밀착되는 텍스처로 높은 착색력 유지",
+   type:"행사·장시간 유지형", purpose:"식사와 사진 촬영이 반복돼도 처음 발색 유지",
+   points:["잦은 식음 환경 대응","장시간 착색 지속력","수정화장 최소화"],
+   example:"食事をしても落ちにくいティント発色 / 写真撮影まで色が続く口元"},
+
+  {id:5, title:"입술이 거칠어 평소엔 보습 중심이지만 '보기에라도 정돈하고 싶은' 날",
+   context:"· 건조해도 갈라지지 않는 마무리를 원함\n· 보습과 함께 정돈하는 순서까지 고려\n· 거친 입술을 가리면서 무너짐도 막고 싶음",
+   factors:"· 건조로 인한 갈라짐을 억제하는 보습\n· 거칠어도 눈에 안 띄는 매끄럽게 발리는 사용감\n· 발색과 케어를 함께 잡는 촉촉한 질감",
+   sku:"컬러커버틴트: 매트하지만 끼임 없는 부드러운 발림감\n탕후루 딥 글레이즈: 한 번 발라도 윤기나는 광택감 / 도톰·생기 있는 입술\n누디블러틴트: 블러효과로 거친 입술도 매끄럽게 정돈\n탕후루 밀크: 에멀전 텍스처로 건조갈라짐 완화",
+   type:"보습·정돈형", purpose:"건조하고 거친 입술도 자연스럽고 깔끔하게 정돈",
+   points:["건조·각질 환경 대응","보습과 발색 동시 충족","매끄러운 립 표현"],
+   example:"乾燥した唇でもなめらかに発色 / うるおいを保ちながら整うリップ"},
+
+  {id:6, title:"마스크를 종일 쓰는 날, 아침엔 괜찮아도 낮에 대화하다 색이 옅어질까 두려워진 때",
+   context:"· 마스크에 닿아도 색이 안 옅어지는 제품 탐색\n· 시간이 지나도 무너지지 않기를 원함\n· 수정화장이 어렵다는 전제로 처음부터 지속력 중심 선택",
+   factors:"· 높은 색 지속(밀착·지속)\n· 마스크 마찰에 강한 뭉침·번짐 저감\n· 얇게 발라도 안 뭉치는 균일 발색",
+   sku:"컬러커버틴트: 매트한 마무리감으로 마스크 묻어남 적음\n탕후루 딥 글레이즈: 한 번 발라도 윤기나는 광택감\n누디블러틴트: 얇고 가벼운 텍스처로 밀착되어 번짐 억제\n탕후루 밀크: 빠르게 밀착되는 텍스처로 높은 착색력 유지",
+   type:"데일리 지속력형", purpose:"수정이 어려운 상황에서도 안정적인 립 컨디션 유지",
+   points:["마스크 환경에서도 발색 유지","수정화장 최소화","거울 없이도 안심되는 지속력"],
+   example:"塗り直し不要のロングラスティングティント / 夕方まで続く均一な発色"},
+
+  {id:7, title:"관공서·병원 등 도중에 화장을 못 고치는 용무가 이어지는 날, 외출 전 실패를 피하고 싶은 때",
+   context:"· 장시간에도 묻어남·뭉침이 안 생기는 제품 선택\n· 화장실에서 고치지 않아도 되는 지속력을 원함\n· 지저분해 보이지 않도록 첫 발색에서 완성하고 싶음",
+   factors:"· 장시간 묻어남·뭉침을 억제하는 처방\n· 마찰에 강한 밀착 타입 질감\n· 한 번 발라 마무리가 안 무너지는 발색",
+   sku:"컬러커버틴트: 근무 내내 안 지워지는 발색 유지 → 묻어남 적어 청결한 인상\n탕후루 딥 글레이즈: 오래 유지되는 글레이즈 광택으로 생기있는 인상\n누디블러틴트: 한 번 발라 완성되는 입술 보정\n탕후루 밀크: 요플레 현상 방지로 균일한 발색 유지",
+   type:"안심 지속력형", purpose:"수정이 어려운 일정에서도 신경 쓰지 않고 하루를 보내기",
+   points:["장시간 일정 대응","마찰·묻어남 방지","한 번에 완성되는 안정감"],
+   example:"一度塗れば長時間続く安心ティント / 外出先でも気にならない密着リップ"},
+
+  {id:8, title:"여자 모임 전 '이대로 마셔도 될까' 불안해지고 잔·컵에 색이 묻는 게 싫은 때",
+   context:"· 음료 용기에 색이 잘 안 묻는 제품을 원함\n· 색이 지워질 때도 지저분하지 않기를 원함",
+   factors:"· 잔·컵 묻어남을 억제하는 처방\n· 식음 시 번짐·묻어남을 억제하는 밀착\n· 닦아내지 않아도 지저분하게 지워지지 않음",
+   sku:"컬러커버틴트: 가볍게 밀착되어 덧 발라도 뭉침·끼임 없는 마무리감\n탕후루 딥 글레이즈: 오래 지속되는 광택감 / 식후에도 혈색감 유지\n누디블러틴트: 식후에도 유지되는 자연스러운 혈색감\n탕후루 밀크: 빠르게 밀착되는 텍스처로 높은 착색력 유지",
+   type:"모임·식음 대응형", purpose:"모임 중에도 립 상태를 신경 쓰지 않고 편하게 즐기기",
+   points:["음료·식사 환경 대응","컵 묻어남 최소화","깔끔한 립 컨디션 유지"],
+   example:"グラスにつきにくいロングラスティングティント / 飲み会でも気にならない密着発色"},
+
+  {id:9, title:"입술이 잘 마르는 체질이라 느낀 날, 티슈 오프·사전 준비까지 포함해 무너짐 대책을 세우고 싶은 때",
+   context:"· 건조가 원인인 뭉침을 줄이는 도포법 탐색\n· 수분·유분 조절로 지속력 높이는 법 시험\n· 직후뿐 아니라 시간이 지나서도 무너지지 않기를 원함",
+   factors:"· 건조로 인한 뭉침·번짐을 억제하는 처방\n· 식후 무너짐을 억제하는 내구성 높은 밀착 타입\n· 티슈 오프 후에도 안 무너지는 균일 발색",
+   sku:"컬러커버틴트: 매트하지만 끼임 없는 부드러운 발림감\n탕후루 딥 글레이즈: 글레이즈 광택으로 도톰·생기 있는 입술\n누디블러틴트: 블러효과로 거친 입술도 매끄럽게 정돈\n탕후루 밀크: 에멀전 텍스처로 건조갈라짐 완화",
+   type:"컨디션 케어형", purpose:"입술 상태가 좋지 않은 날에도 안정적인 립 표현 유지",
+   points:["건조 체질 대응","무너짐 사전 예방","균일한 발색 유지"],
+   example:"荒れやすい唇にもなめらかに密着 / ティッシュオフ後も続く均一発色"},
+
+  {id:10, title:"졸업식·입학식 당일, 이동·촬영으로 바빠 거울 꺼내 고칠 시간이 없을 것 같은 때",
+   context:"· 사진에서 입술이 도드라져도 안 무너지는 제품 선택\n· 덧바르지 않아도 색이 오래 유지되길 원함\n· 안 뭉치는 질감을 원함",
+   factors:"· 덧바르지 않아도 잘 안 지워지는 색 지속\n· 움직임·이동에도 안 뭉치는 밀착\n· 사진에서 입술 윤곽이 무너져 보이지 않음",
+   sku:"컬러커버틴트: 가볍게 밀착되어 덧 발라도 뭉침·끼임 없는 마무리감\n탕후루 딥 글레이즈: 오래 지속되는 광택감 / 식후에도 혈색감 유지\n누디블러틴트: 얇고 가벼운 텍스처로 밀착되어 번짐 억제\n탕후루 밀크: 빠르게 밀착되는 텍스처로 높은 착색력 유지",
+   type:"포토 이벤트형", purpose:"졸업식·입학식 등 기념 촬영이 많은 날 안정적인 립 표현 유지",
+   points:["사진 속 발색 유지","윤곽 무너짐 방지","이동 중 밀착 지속력"],
+   example:"写真でも映える均一発色 / 動いても崩れにくい密着ティント"}
+];
+
+const baseCeps = [
+  {id:1, title:"면접이나 증명사진 촬영 전날~당일, 깔끔하고 단정한 인상을 주기 위해 피부 표현을 가장 중요하게 관리하려는 상황",
+   context:"피부 톤과 결을 균일하게 정돈하고 싶음 / 두껍지 않으면서 깔끔한 피부 표현을 원함 / 오랜 시간 무너지지 않는 베이스를 만들고 싶음 / 사진이나 대면 상황에서 깨끗한 인상을 주고 싶음",
+   factors:"번들거림 없이 균일한 피부 표현 / 자연스럽게 밀착되는 블렌딩력 / 장시간 유지되는 지속력 / 베이스~파운데이션 단계를 줄일 수 있는 간편함",
+   sku:"철벽베이스: 장시간 무너지지 않는 피부 표현, 면접·증명사진 촬영 전 밀착력 강화, 번들거림·들뜸 최소화\n심리스파데: 피부 톤·결 균일 보정, 자연스럽고 깔끔한 커버, 카메라 촬영 시 매끈한 피부 표현\n파운데이션 브러시: 파운데이션을 균일하게 밀착시켜 뭉침·경계 최소화, 두껍지 않으면서도 매끈한 피부 표현",
+   type:"첫인상 관리", purpose:"면접, 증명사진, 중요한 일정 대비",
+   points:["균일한 피부결 표현","장시간 유지되는 베이스","중요한 일정 전 첫인상 관리","두껍지 않은 자연스러운 커버"],
+   example:"面接前、肌印象まで準備完了 / 証明写真でも均一な肌へ / 第一印象を決めるベースメイク"},
+
+  {id:2, title:"겨울~봄철 건조한 날씨로 인해 파운데이션이 들뜨거나 각질이 부각되어 피부가 지저분해 보인다고 느끼는 아침",
+   context:"들뜸과 각질 부각을 최소화하고 싶음 / 파운데이션이 잘 밀착되는 피부 상태를 만들고 싶음 / 두껍게 덮기보다 균일하게 보정하고 싶음 / 건조해 보여서 칙칙해지는 인상을 줄이고 싶음",
+   factors:"건조함을 완화할 수 있는 보습감 / 모공과 피부결에 끼지 않는 밀착력 / 얇고 자연스럽게 레이어링 가능한 제형 / 무너져도 지저분해 보이지 않는 피부 표현",
+   sku:"철벽베이스: 건조로 인한 들뜸 방지, 파운데이션 밀착력 향상, 메이크업 지속력 강화\n심리스파데: 모공·피부결 균일 보정, 건조 부각 없이 자연스러운 표현, 얇고 균일한 커버\n파운데이션 브러시: 각질·모공 부각 없이 균일하게 블렌딩, 뭉침 없는 밀착, 얇고 자연스러운 레이어링",
+   type:"들뜸/건조 해결형", purpose:"건조로 인해 베이스가 지저분해 보이는 상황 해결",
+   points:["건조로 인한 메이크업 들뜸 해결","파운데이션 밀착력 강화","모공·피부결 보정","얇고 균일한 피부 표현"],
+   example:"乾燥しても粉っぽく見えない肌へ / ファンデのノリが変わるベース仕込み / 毛穴に落ちにくいなめらか肌へ / カサつき知らずの均一ベース"},
+
+  {id:3, title:"출근·등교 준비로 시간이 부족한 아침, 스킨케어는 최소화하고 빠르게 피부 표현을 완성하고 싶은 상황",
+   context:"짧은 시간 안에 피부를 균일하게 정돈하고 싶음 / 출발 전 베이스 메이크업을 빠르게 끝내고 싶음 / 복잡한 단계를 줄이고 싶음 / 시간이 없어도 깔끔한 피부 표현은 유지하고 싶음",
+   factors:"빠르게 펴 바를 수 있는 사용성 / 한 번에 균일하게 표현되는 커버력 / 적은 양으로도 피부 보정이 가능한 색 설계 / 들뜨지 않고 밀착되는 베이스력",
+   sku:"철벽베이스: 짧은 시간 안에 베이스 밀착력 확보, 출근·등교 전 빠른 메이크업 준비\n심리스파데: 빠른 피부결·톤 보정, 적은 터치로 균일한 표현, 자연스러운 커버와 밀착력\n파운데이션 브러시: 손보다 빠르고 균일한 블렌딩, 메이크업 시간 단축, 적은 양으로도 깔끔한 표현",
+   type:"시간 절약형", purpose:"바쁜 아침 메이크업 간소화 / 최소 시간으로 피부 완성",
+   points:["출근·등교 전 5분 베이스 메이크업","빠르고 균일한 피부 표현","멀티 기능 베이스 루틴","시간 대비 효율 극대화"],
+   example:"朝5分で完成するベースメイク / 急いでいてもムラなく仕上がる / 忙しい朝の時短ベース / 下地から仕上がりまでスムーズに"},
+
+  {id:4, title:"수면 부족으로 눈 밑 다크서클과 칙칙함이 도드라져 보일 때, 가장 신경 쓰이는 부위만 빠르게 보정하고 싶은 상황",
+   context:"눈 밑 다크서클을 즉시 가리고 싶음 / 얼굴 전체 메이크업을 수정하지 않고 특정 부위만 정리하고 싶음 / 경계가 티 나지 않게 자연스럽게 보정하고 싶음 / 피곤해 보이는 인상을 빠르게 개선하고 싶음",
+   factors:"뭉침 없이 균일한 커버력 / 오랜 시간 다크서클이 다시 드러나지 않는 지속력 / 두껍지 않고 자연스러운 보정력 / 경계가 티 나지 않는 블렌딩력",
+   sku:"심리스파데: 피부 톤을 균일하게 정돈하여 다크서클 부각 완화, 얇고 자연스러운 표현, 부분 보정 후에도 경계 안 도드라짐\n파운데이션 브러시: 눈 밑·국소 부위 정교한 블렌딩, 커버 경계 최소화\n철벽베이스: 국소 보정 후 무너짐 최소화, 지속력 강화",
+   type:"피곤 인상 개선형 (부분 커버)", purpose:"피곤해 보이는 인상 개선 / 부분 보정",
+   points:["피곤해 보이는 인상 개선","부분 보정 메이크업","자연스러운 커버","티 나지 않는 블렌딩"],
+   example:"疲れて見えない肌へ / クマ・くすみを自然にカバー / 朝の5分で明るい印象へ",
+   note:"⚠ 베이스 전체 카테고리 니즈보다 컨실러/부분 커버 니즈에 가까워 WM 전체 베이스 라인 반등 포인트로는 우선순위가 낮음"},
+
+  {id:5, title:"장마철 높은 습도와 마스크 착용으로 인해 오전~점심 사이 메이크업이 무너질 것을 우려하는 상황",
+   context:"무너지기 전에 처음부터 지속력을 높이고 싶음 / 습도와 마스크 속 열기로 인한 들뜸을 최소화하고 싶음 / 전체 수정화장 없이 부분 수정만으로 하루를 버티고 싶음 / 외출 중에도 쉽게 관리 가능한 루틴을 원함",
+   factors:"습도·유분 환경에서도 유지되는 밀착력 / 자외선 차단과 베이스를 동시에 해결할 수 있는 간편함 / 건조와 유분 변화를 동시에 고려한 밸런스 / 휴대와 수정화장이 용이한 사용성",
+   sku:"철벽베이스: 고습도 환경에서 지속력 강화, 마스크 착용 시 밀착력 유지, 들뜸·무너짐 방지\n심리스파데: 무너져도 지저분해 보이지 않는 표현, 피부결·모공 보정 유지, 균일한 표현 지속\n파운데이션 브러시: 얇고 균일한 밀착, 습도 환경에서도 두껍지 않은 완성, 최소량으로 지속력 향상",
+   type:"고습도·장마철 대응형", purpose:"습도·마스크 환경에서 메이크업 지속력 유지",
+   points:["고습도·장마철 메이크업 지속력","마스크를 써도 되는 기초화장","무너져도 깨끗한 피부 표현","부분 수정 중심 베이스 루틴"],
+   example:"梅雨でもくずれにくい肌へ / 湿気が気になる日のベース対策 / 雨の日も均一な肌印象をキープ",
+   note:"※ 검색량 자체는 크지 않으나 CEP 분석에서는 고습도·마스크 환경 지속력 니즈가 뚜렷이 확인됨"},
+
+  {id:6, title:"한여름 출근·등교길, 땀과 피지로 인해 오후가 되면 메이크업이 무너질 것을 걱정하는 상황",
+   context:"땀과 피지로 인한 번들거림을 줄이고 싶음 / 얇지만 강하게 밀착되는 베이스를 만들고 싶음 / 수정화장을 최소화하고 싶음 / 오후에도 아침과 비슷한 피부 상태를 유지하고 싶음",
+   factors:"고온다습한 환경에서도 유지되는 밀착력 / 피지·땀에 강한 지속력 / 마스크 환경에서도 무너지지 않는 안정성 / 부분 수정 시에도 뭉치지 않는 사용성",
+   sku:"철벽베이스: 땀·피지 환경에서도 유지되는 밀착력, 오후 무너짐 방지, 여름철 지속력 솔루션\n심리스파데: 무너져도 지저분해 보이지 않는 표현, 피부결·모공 보정 유지, 유분이 올라와도 균일한 연출\n파운데이션 브러시: 얇고 균일한 밀착, 두껍지 않은 레이어링, 수정 시에도 경계 없는 표현",
+   type:"여름철 지속력 특화형", purpose:"땀·피지 환경 대응 / 출근·등교 후 무너짐 방지",
+   points:["여름철 땀·피지 대응 베이스","오후 무너짐 방지","고밀착·고지속력 메이크업","수정화장 최소화"],
+   example:"汗・皮脂にも負けない密着ベース / 朝の仕上がり、そのままキープ / 崩れにくい夏のベースメイク"},
+
+  {id:7, title:"온라인 회의 직전, 화면 속 자신의 피부가 번들거리거나 얼룩져 보이는 것이 신경 쓰여 베이스 메이크업을 통해 인상을 정돈하고 싶은 상황",
+   context:"화면에서 피부가 매끈하게 보이고 싶음 / 과한 메이크업 없이 깔끔한 인상을 만들고 싶음 / 짧은 시간 안에 피부 컨디션을 정돈하고 싶음 / 회의 내내 안정적인 피부 표현을 유지하고 싶음",
+   factors:"번들거림을 줄여주는 유분 컨트롤 / 화면 조명에서도 균일하게 보이는 피부 표현 / 오랜 시간 유지되는 지속력 / 수정화장을 최소화할 수 있는 안정성",
+   sku:"철벽베이스: 화면 조명 아래에서도 번들거림 최소화, 회의 시간 동안 무너짐 방지, 장시간 유지되는 피부 컨디션\n심리스파데: 카메라에서 매끈하게 보이는 피부결 연출, 균일한 톤 보정, 자연스러운 커버로 깔끔한 인상\n파운데이션 브러시: 화면에서 티 나지 않는 균일한 표현, 뭉침 없는 블렌딩, 얇고 자연스러운 밀착",
+   type:"화면 속 첫인상 관리형", purpose:"온라인 회의 / 화상 면접 / 재택근무 환경",
+   points:["카메라 촬영에 친화적인 베이스","화상회의용 첫인상 관리","번들거림 없는 피부 표현","장시간 유지되는 깔끔한 인상"],
+   example:"画面越しでもなめらかな肌へ / オンライン会議前のベース仕込み / カメラ映えする均一肌"},
+
+  {id:8, title:"여행·레저, 장시간 이동과 냉난방 환경으로 피부 컨디션 변화가 예상되어 최소한의 단계로 피부를 정돈하고 싶은 상황",
+   context:"이동 전 빠르게 피부를 정돈하고 싶음 / 선케어와 베이스를 동시에 해결하고 싶음 / 여행 중 피부 컨디션 변화에 대비하고 싶음 / 무겁지 않은 메이크업으로 자연스럽게 유지하고 싶음",
+   factors:"UV 케어와 베이스 기능을 동시에 해결하는 편의성 / 건조와 무너짐을 함께 고려한 균형감 / 적은 단계로 완성 가능한 멀티 기능성 / 이동 중에도 부담 없는 사용성",
+   sku:"철벽베이스: UV+베이스 루틴 간소화, 이동 중 무너짐 최소화, 장시간 밀착 유지\n심리스파데: 얇고 자연스러운 표현, 무거움 없이 균일한 피부결 보정, 여행 중에도 부담 없는 커버\n파운데이션 브러시: 빠르고 균일한 표현, 적은 양으로도 자연스러운 블렌딩, 간편한 베이스 완성",
+   type:"여행·레저 시간단축형", purpose:"여행 준비 간소화 / 휴가철 이동 대응 / 올인원 베이스",
+   points:["UV+베이스 올인원 루틴","여행·레저용 간편 베이스","이동 중에도 무너지지 않는 표현","최소 단계 메이크업"],
+   example:"ひと塗りでベースメイク完了 / UVもベースもこれひとつ / 荷物を増やさないベース習慣"},
+
+  {id:9, title:"장시간 마스크 착용이 예정된 날, 입 주변 메이크업이 무너지거나 묻어날 것을 우려해 처음부터 밀착력 높은 베이스를 탐색",
+   context:"마스크 환경에서도 메이크업이 무너지지 않기를 원함 / 처음부터 밀착력을 높여 수정화장을 줄이고 싶음 / 오랜 시간 집중해야 하는 일정에서 피부 표현을 유지하고 싶음 / 묻어남이나 얼룩짐 없이 깔끔한 인상을 유지하고 싶음",
+   factors:"마스크 마찰에도 강한 밀착력 / 화장이 묻어나는 것을 방지 / 장시간 지속되는 베이스 유지력 / 수정화장이 최소화되는 균일한 표현",
+   sku:"철벽베이스: 마스크 환경에서도 유지되는 고밀착, 묻어남·무너짐 최소화, 장시간 지속력 강화\n심리스파데: 무너져도 얼룩지지 않는 표현, 균일한 피부결 유지, 얇고 자연스러운 밀착감\n파운데이션 브러시: 얇고 균일한 밀착, 과도한 도포 없이 지속력 향상, 수정화장을 줄이는 완성도",
+   type:"마스크 프루프형", purpose:"장시간 마스크 착용 대응 / 묻어남 방지",
+   points:["Mask-Proof 베이스","묻어남 방지","고밀착·고지속력","수정화장 최소화"],
+   example:"マスクの日も崩れにくい肌へ / 長時間つけてもヨレにくい / マスク移りを防ぐベース仕込み"}
+];
+
+function renderCeps(list, containerId) {
+  const container = document.getElementById(containerId);
+  list.forEach(c => {
+    const card = document.createElement('div');
+    card.className = 'card cep-card cursor-pointer';
+    card.innerHTML = `
+      <div class="cep-head flex items-start justify-between gap-3">
+        <div class="flex items-start gap-3">
+          <span class="badge bg-rose-500 text-white shrink-0">CEP-${c.id}</span>
+          <span class="font-bold text-sm md:text-base">${c.title}</span>
+        </div>
+        <span class="chevron text-slate-400 shrink-0">▼</span>
+      </div>
+      <div class="cep-body mt-4 space-y-3 text-sm">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div class="rounded-lg bg-slate-50 p-3"><div class="font-bold text-slate-500 mb-1 text-xs">세부 맥락</div><pre class="text-slate-600">${c.context}</pre></div>
+          <div class="rounded-lg bg-slate-50 p-3"><div class="font-bold text-slate-500 mb-1 text-xs">핵심 구매 요소</div><pre class="text-slate-600">${c.factors}</pre></div>
+        </div>
+        <div class="rounded-lg bg-rose-50 p-3"><div class="font-bold text-rose-500 mb-1 text-xs">제품(SKU) 활용 포인트</div><pre class="text-slate-700">${c.sku}</pre></div>
+        ${c.note ? `<div class="rounded-lg bg-amber-50 p-3 text-amber-700 text-xs">${c.note}</div>` : ''}
+        <div class="rounded-lg bg-slate-900 text-white p-3">
+          <div class="flex flex-wrap items-center gap-2 mb-2">
+            <span class="badge bg-rose-400 text-white">${c.type}</span>
+            <span class="text-xs text-slate-300">${c.purpose}</span>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-2">
+            ${c.points.map(p => `<span class="text-xs bg-white/10 rounded px-2 py-1">✅ ${p}</span>`).join('')}
+          </div>
+          <div class="text-xs text-rose-200 font-mono leading-relaxed">${c.example}</div>
+        </div>
+      </div>
+    `;
+    card.querySelector('.cep-head').addEventListener('click', () => card.classList.toggle('open'));
+    container.appendChild(card);
+  });
+}
+renderCeps(lipCeps, 'lip-cep-list');
+renderCeps(baseCeps, 'base-cep-list');
+
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.classList.add('text-slate-500'); });
+    btn.classList.add('active'); btn.classList.remove('text-slate-500');
+    document.getElementById('tab-lip').classList.toggle('hidden', btn.dataset.tab !== 'lip');
+    document.getElementById('tab-base').classList.toggle('hidden', btn.dataset.tab !== 'base');
+  });
+});
+</script>
+</body>
+</html>
