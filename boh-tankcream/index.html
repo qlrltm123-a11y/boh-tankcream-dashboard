@@ -10,6 +10,10 @@
   .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 1.25rem; }
   .badge { display:inline-block; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 999px; }
   ::-webkit-scrollbar { height: 8px; }
+  .cep-body { display:none; }
+  .cep-card.open .cep-body { display:block; }
+  .cep-card.open .chevron { transform: rotate(180deg); }
+  .chevron { transition: transform .2s; }
 </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -227,6 +231,13 @@
     </div>
   </section>
 
+  <!-- CEP 분석 -->
+  <section>
+    <h2 class="text-lg font-bold mb-3">CEP (카테고리 진입 시점) 분석 - 클릭해서 펼쳐보세요</h2>
+    <p class="text-sm text-slate-500 mb-3">소비자가 "이런 상황이라면 boh 朝ちゅる夜タンクリーム가 필요해!"라고 떠올리는 구체적 순간(CEP)을 정리했습니다. 각 카드를 클릭하면 상황 → 핵심 구매요소 → boh 제품 강점 매칭 → 예시 카피까지 펼쳐집니다.</p>
+    <div id="boh-cep-list" class="space-y-3"></div>
+  </section>
+
   <!-- 로드맵 -->
   <section>
     <h2 class="text-lg font-bold mb-3">단계별 로드맵</h2>
@@ -402,5 +413,113 @@
   </footer>
 
 </main>
+
+<script>
+const bohCeps = [
+  {id:1, title:"아침에 일어났을 때 피부가 칙칙하고 처져 보여, 메이크업 전에 피부를 정돈하고 싶은 상황",
+   context:"전날 밤 피곤하게 잠들어 아침 피부 컨디션이 걱정됨 / 메이크업이 들뜨거나 칙칙해 보이는 게 신경 쓰임 / 짧은 시간에 피부 톤·탄력을 끌어올리고 싶음",
+   factors:"발림과 동시에 산뜻하게 흡수되는 가벼운 텍스처 / 메이크업 전 피부를 정돈해주는 즉각적 사용감 / 끈적임 없이 산뜻한 마무리감",
+   sku:"朝ちゅるクリーム: ちゅるちゅる한 가벼운 텍스처로 메이크업 전 피부 정돈, 콜라겐 캡슐로 즉각적인 촉촉함과 윤기 부여, 산뜻한 흡수감으로 끈적임 없이 베이스 메이크업과 자연스럽게 밀착",
+   type:"아침 피부 리셋형", purpose:"기상 후 메이크업 전 피부 정돈",
+   points:["메이크업 전 즉시 컨디셔닝","산뜻한 흡수감","칙칙함 개선 기대"],
+   example:"朝ちゅるっと馴染んで、化粧前の肌が変わる / メイク前のひと手間で、もっと明るい肌印象へ"},
+
+  {id:2, title:"자기 전, 오늘 하루 피부가 처진 느낌이 들어 자는 동안 집중적으로 탄력 케어를 하고 싶은 상황",
+   context:"하루 종일 외부 자극에 노출된 피부를 밤에 집중 회복시키고 싶음 / 피부 탄력・処짐(たるみ)이 신경 쓰이기 시작함 / 자는 동안 피부가 회복되는 '골든타임'을 활용하고 싶음",
+   factors:"농후하지만 무겁지 않은 밤용 텍스처 / 탄력・하리감을 주는 독자 성분(プロバイオバイオム™) / 자고 일어났을 때(翌朝) 체감되는 변화",
+   sku:"夜タン(弾)クリーム: プロバイオバイオム™ 함유로 자는 동안 탄력 케어, 농후한 텍스처가 피부에 밀착되어 翌朝까지 보습・탄력 지속, 통통하고 탄력있는 젤리 같은 발림감으로 즉각적인 하리감 제공",
+   type:"밤 집중 탄력 케어형", purpose:"수면 중 たるみケア, 翌朝 변화 기대",
+   points:["프로바이오바이옴™ 탄력 케어","翌朝 체감형 변화","농후한 발림감"],
+   example:"夜、弾(タン)クリームを塗って寝る。翌朝、ちゅるんとハリ肌。 / 寝ている間に、明日のハリを仕込む"},
+
+  {id:3, title:"콜라겐・보습 위주 제품을 오래 써왔지만 큰 변화를 못 느껴, '다른 성분'의 제품을 찾아보는 상황",
+   context:"\"콜라겐=보습 성분일 뿐, 탄력을 직접 개선하진 않는다\"는 정보를 접하고 콜라겐 제품에 대한 기대치가 낮아짐 / 나이아신아마이드・레티놀・PDRN 등 '유효성분명'이 명시된 제품에 관심 / 한 단계 다른 효과를 주는 새로운 성분을 찾고 있음",
+   factors:"콜라겐과는 다른 독자적인 유효성분 / 성분의 작용 원리를 구체적으로 설명하는 콘텐츠 / 실제 체감 사례(리뷰)가 뒷받침되는 성분",
+   sku:"夜タン(弾)クリーム: プロバイオバイオム™(독자 유산균 성분)이 콜라겐과 차별되는 새로운 축으로 작용, 기존 리프팅크림 사용자 리뷰에서 \"민감피부에도 자극 없이 사용 가능\"한 점이 실증됨, 翌朝 변화 스토리로 성분의 효과를 체감형으로 전달",
+   type:"성분 전환 탐색형", purpose:"콜라겐 피로감 → 신규 성분 탐색",
+   points:["콜라겐과 차별되는 독자 성분","민감피부 실사용 검증","체감형 스토리텔링"],
+   example:"これ、塗るハイフ？プロバイオバイオム™のチカラ、翌朝の鏡で実感。"},
+
+  {id:4, title:"SNS에서 '塗るハイフ(바르는 하이푸)'나 PDRN 크림이 화제가 된 글을 보고, 비슷한 즉효감을 주는 제품을 검색하는 상황",
+   context:"\"夜に塗って寝ると翌朝肌がふっくらする\"는 후기를 보고 비슷한 경험을 기대 / 화장품으로 미용기기급 효과를 얻고 싶다는 기대감 / 한국 화장품=강한 성분・빠른 체감이라는 인식을 갖고 있음",
+   factors:"翌朝 체감을 뒷받침하는 구체적 사용 후기 / \"기기급 효과\" 프레임에 부합하는 임팩트 있는 성분/네이밍 / 한국 화장품다운 농후한 처방감",
+   sku:"夜タン(弾)クリーム: '塗るハイフ'와 동일한 \"夜→翌朝\" 시간차 효과 프레임에 정확히 부합, プロバイオバイオム™을 임팩트 있는 체감형 워딩으로 제시, 한국 코스메 특유의 농후한 텍스처로 \"강한 처방\" 이미지 어필",
+   note:"⚠ 임팩트 네이밍은 법무/약사법 검토가 선행되어야 하는 영역입니다 (failure-diagnosis A-3 참고)",
+   type:"트렌드 화제성 추종형", purpose:"塗るハイフ/PDRN 트렌드 유입 고객",
+   points:["翌朝 시간차 효과 프레임","K뷰티 즉효 이미지 활용","독자 성분 임팩트 워딩(검토 필요)"],
+   example:"ちゅるっと馴染んで、翌朝ハリ実感。韓国コスメの濃厚処方、その差を体で。"},
+
+  {id:5, title:"다음날 중요한 일정(미팅・촬영・약속)이 있어, 자기 전 '내일 아침 컨디션'을 미리 챙겨두고 싶은 상황",
+   context:"내일 좋은 컨디션의 피부로 시작하고 싶음 / 평소보다 한 단계 더 신경 쓴 나이트 케어를 하고 싶음 / \"오늘 밤의 한 단계가 내일을 바꾼다\"는 확실한 결과를 기대",
+   factors:"자고 일어났을 때 명확하게 체감되는 변화 / 다음날 메이크업이 잘 먹는 피부 컨디션 / 특별한 날을 위한 \"의식(루틴)\"으로서의 만족감",
+   sku:"夜タン(弾)クリーム: \"夜に塗って、翌朝の鏡で実感\"이라는 결과 중심 스토리에 정확히 부합, 농후한 발림감으로 \"오늘은 특별 케어를 했다\"는 의식적 만족감 제공, 翌朝 메이크업이 잘 먹는 피부 컨디션으로 연결",
+   type:"특별한 날 전야 케어형", purpose:"중요 일정 전날 밤 집중 케어",
+   points:["翌朝 컨디션 보장 기대","의식적 나이트 루틴","메이크업 베이스 컨디션 개선"],
+   example:"明日が大事な日。今夜は弾(タン)クリームで、特別なケアを。"},
+
+  {id:6, title:"지성・복합성 피부라 끈적이는 야간크림은 피하고 싶지만, 보습은 확실히 챙기고 싶은 상황",
+   context:"기존에 쓰던 농후한 크림에서 끈적임(ベタつき)을 경험하고 부담을 느낌 / 보습은 필요하지만 다음날 아침까지 유분감이 남는 건 싫음 / 가볍지만 보습력은 확실한 제품을 찾고 있음",
+   factors:"발림은 농후하지만 흡수 후 산뜻한 마무리감 / 翌朝까지 이어지는 보습은 유지하되 유분 잔여감은 적음 / 무향료라 다른 제품과 레이어링하기 편함",
+   sku:"夜タン(弾)クリーム: 통통한 젤리 같은 발림감이지만 흡수 후 산뜻함, 기존 리프팅크림 리뷰에서 확인된 \"翌朝まで保湿持続\" + 자극 적음 특성 계승, 무향료를 \"매일 지속하기 편한 이유\"로 긍정 프레이밍",
+   note:"⚠ 기존 리프팅크림 리뷰에서 ベタつき(끈적임) 부정 의견도 일부 존재 - 지성/여드름 피부 세그먼트는 사용감 후기로 우려를 해소할 필요",
+   type:"가벼운 보습 추구형", purpose:"지성・복합성 피부의 야간 보습 대안 탐색",
+   points:["산뜻한 마무리감","翌朝 보습 지속","무향료=매일 지속 가능"],
+   example:"重くないのに、翌朝まで潤いキープ。毎日続けやすい弾クリーム。"},
+
+  {id:7, title:"아침・저녁 스킨케어를 세트로 정착시키고 싶어, 역할이 명확히 나뉜 朝晩 루틴 제품을 찾는 상황",
+   context:"아침은 가볍게, 저녁은 진하게 쓰는 루틴이 이미 익숙함(아테니아 등 사례) / 아침/저녁 제품의 역할이 명확히 구분되는 세트를 선호 / 루틴을 챙기는 것 자체에 만족감을 느낌",
+   factors:"아침/저녁 각각의 역할이 명확한 텍스처 차이 / 세트로 사용했을 때의 시너지(시간차 효과) / 루틴화하기 쉬운 사용 순서・스토리",
+   sku:"朝ちゅる夜タン 세트: 朝=가벼운 ちゅるちゅる 텍스처로 메이크업 전 정돈, 夜=농후한 弾クリーム로 수면 중 집중 케어, \"夜に仕込んで、朝に確認する\" 구조로 두 제품의 역할과 효과가 인과적으로 연결됨",
+   type:"朝晩 세트 루틴형", purpose:"아침/저녁 역할 분담 루틴 정착",
+   points:["朝/夜 역할 명확화","세트 사용 시너지","익숙한 루틴 프레임에 자연 편입"],
+   example:"夜は濃厚タンクリーム、朝はちゅるちゅる仕上げ。私の肌、もう一段階上へ。"},
+
+  {id:8, title:"민감성 피부라 자극 걱정 없이 쓸 수 있는 한국 화장품을 찾고 있는 상황",
+   context:"한국 화장품=강한 성분이라는 인식 때문에 민감피부에는 자극이 있을까 걱정됨 / 트러블 없이 꾸준히 쓸 수 있는 제품인지가 가장 중요한 선택 기준 / 향료 등 자극 요인이 적은 제품을 선호",
+   factors:"민감피부 사용 후기로 검증된 자극 적음 / 무향료 등 자극 요인을 줄인 처방 / 꾸준히 사용했을 때의 누적 효과에 대한 신뢰",
+   sku:"夜タン(弾)クリーム: 기존 BIOHEAL BOH 리프팅크림 리뷰에서 \"민감피부에도 자극 없이 사용 가능\"이 실제 사용자 평으로 확인됨, 무향료 처방을 \"매일 자극없이 지속 가능\"이라는 안심 메시지로 전달, プロバイオバイオム™(유산균 성분)을 \"피부에 부담을 주지 않는 성분\"으로 포지셔닝 가능",
+   type:"민감피부 안심형", purpose:"민감피부의 K뷰티 진입 장벽 해소",
+   points:["민감피부 실사용 검증","무향료=안심 포인트","꾸준한 사용을 위한 신뢰"],
+   example:"無香料だから、毎日続けやすい。敏感肌にもやさしい弾クリーム。"}
+];
+
+function renderBohCeps() {
+  const container = document.getElementById('boh-cep-list');
+  bohCeps.forEach(c => {
+    const card = document.createElement('div');
+    card.className = 'card cep-card cursor-pointer';
+    card.innerHTML = `
+      <div class="cep-head flex items-start justify-between gap-3">
+        <div class="flex items-start gap-3">
+          <span class="badge bg-rose-500 text-white shrink-0">CEP-${c.id}</span>
+          <span class="font-bold text-sm md:text-base">${c.title}</span>
+        </div>
+        <span class="chevron text-slate-400 shrink-0">▼</span>
+      </div>
+      <div class="cep-body mt-4 space-y-3 text-sm">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div class="rounded-lg bg-slate-50 p-3"><div class="font-bold text-slate-500 mb-1 text-xs">세부 맥락</div><pre class="text-slate-600">${c.context}</pre></div>
+          <div class="rounded-lg bg-slate-50 p-3"><div class="font-bold text-slate-500 mb-1 text-xs">핵심 구매 요소</div><pre class="text-slate-600">${c.factors}</pre></div>
+        </div>
+        <div class="rounded-lg bg-rose-50 p-3"><div class="font-bold text-rose-500 mb-1 text-xs">제품(SKU) 활용 포인트</div><pre class="text-slate-700">${c.sku}</pre></div>
+        ${c.note ? `<div class="rounded-lg bg-amber-50 p-3 text-amber-700 text-xs">${c.note}</div>` : ''}
+        <div class="rounded-lg bg-slate-900 text-white p-3">
+          <div class="flex flex-wrap items-center gap-2 mb-2">
+            <span class="badge bg-rose-400 text-white">${c.type}</span>
+            <span class="text-xs text-slate-300">${c.purpose}</span>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-2">
+            ${c.points.map(p => `<span class="text-xs bg-white/10 rounded px-2 py-1">✅ ${p}</span>`).join('')}
+          </div>
+          <div class="text-xs text-rose-200 font-mono leading-relaxed">${c.example}</div>
+        </div>
+      </div>
+    `;
+    card.querySelector('.cep-head').addEventListener('click', () => card.classList.toggle('open'));
+    container.appendChild(card);
+  });
+}
+renderBohCeps();
+</script>
 </body>
 </html>
