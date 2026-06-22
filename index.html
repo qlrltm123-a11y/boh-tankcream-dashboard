@@ -3,12 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>마케팅 인사이트 대시보드 모음</title>
+<title>올리브영 PB 일본 시장 대시보드 모음</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Noto Sans JP", sans-serif; }
   .card-link { transition: transform .15s, box-shadow .15s; }
   .card-link:hover { transform: translateY(-4px); box-shadow: 0 10px 25px -10px rgba(0,0,0,0.25); }
+  .brand-card { transition: box-shadow .2s; }
+  .brand-products { display: none; }
+  .brand-card.open .brand-products { display: block; }
+  .brand-card.open .brand-chevron { transform: rotate(180deg); }
+  .brand-chevron { transition: transform .2s; }
 </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -16,43 +21,98 @@
 <header class="bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow">
   <div class="max-w-5xl mx-auto px-4 py-6">
     <div class="text-xs uppercase tracking-wider opacity-80">Market Research & Strategy Dashboards</div>
-    <h1 class="text-xl md:text-2xl font-extrabold">제품/카테고리별 시장조사·전략 대시보드</h1>
+    <h1 class="text-xl md:text-2xl font-extrabold">올리브영 PB 브랜드별 일본 시장조사·전략 대시보드</h1>
+    <p class="text-sm opacity-90 mt-1">브랜드를 클릭하면 해당 브랜드의 제품별 대시보드 목록이 펼쳐집니다.</p>
   </div>
 </header>
 
-<main class="max-w-5xl mx-auto px-4 py-10">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<main class="max-w-5xl mx-auto px-4 py-10 space-y-5">
 
-    <a href="./boh-tankcream/" class="card-link block bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-      <div class="text-xs font-bold text-rose-500 uppercase tracking-wider mb-2">boh (BIOHEAL BOH)</div>
-      <h2 class="text-lg font-extrabold mb-2">「朝ちゅる夜タンクリーム」 일본 광고 전략 대시보드</h2>
-      <p class="text-sm text-slate-500">たるみケア 포지셔닝, 실패 진단, 차별화 매트릭스, 헤드라인 카피, 채널 전략 및 로드맵</p>
-      <div class="mt-4 text-sm font-bold text-rose-500">대시보드 열기 →</div>
-    </a>
-
-    <a href="./olive-young-pb/" class="card-link block bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-      <div class="text-xs font-bold text-rose-500 uppercase tracking-wider mb-2">올리브영 PB · Colorgram / Wakemake</div>
-      <h2 class="text-lg font-extrabold mb-2">립 메이크업 &amp; 베이스 메이크업 리스닝마인드 대시보드</h2>
-      <p class="text-sm text-slate-500">SKU별 검색 트렌드, CEP(카테고리 진입시점) 19종 분석, 검색 여정 맵, 반등포인트 카피 아이디어</p>
-      <div class="mt-4 text-sm font-bold text-rose-500">대시보드 열기 →</div>
-    </a>
-
-    <a href="./boh-gelmist/" class="card-link block bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-      <div class="text-xs font-bold text-rose-500 uppercase tracking-wider mb-2">boh (BIOHEAL BOH) · 콜라겐 겔미스트</div>
-      <h2 class="text-lg font-extrabold mb-2">콜라겐 겔미스트(ジェリーミスト) 리스닝마인드 대시보드</h2>
-      <p class="text-sm text-slate-500">카테고리 검색량 추이, 탐색 패턴 클러스터, CEP(카테고리 진입시점) 10종 분석, UGC 방향성 정리</p>
-      <div class="mt-4 text-sm font-bold text-rose-500">대시보드 열기 →</div>
-    </a>
-
-    <a href="./boh-nadcream/" class="card-link block bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-      <div class="text-xs font-bold text-rose-500 uppercase tracking-wider mb-2">boh (BIOHEAL BOH) · NAD크림</div>
-      <h2 class="text-lg font-extrabold mb-2">NAD크림(NADクリーム) 리스닝마인드 대시보드</h2>
-      <p class="text-sm text-slate-500">NAD 성분 관심도 분석, 탐색 패턴 클러스터, CEP(카테고리 진입시점) 10종 분석, UGC 방향성 정리</p>
-      <div class="mt-4 text-sm font-bold text-rose-500">대시보드 열기 →</div>
-    </a>
-
+  <!-- BOH -->
+  <div class="brand-card open bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+    <button class="brand-head w-full flex items-center justify-between gap-3 p-6 text-left">
+      <div>
+        <div class="text-xs font-bold text-rose-500 uppercase tracking-wider mb-1">BOH · BIOHEAL BOH</div>
+        <h2 class="text-lg font-extrabold">바이오힐보 — 스킨케어</h2>
+        <p class="text-sm text-slate-500 mt-1">탄크림, 겔미스트, NAD크림, 아이크림 4종 제품별 일본 시장조사·전략 대시보드</p>
+      </div>
+      <span class="brand-chevron text-slate-400 text-xl shrink-0">▼</span>
+    </button>
+    <div class="brand-products px-6 pb-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <a href="./boh-tankcream/" class="card-link block bg-slate-50 border border-slate-200 rounded-xl p-4">
+          <h3 class="font-bold mb-1">「朝ちゅる夜タンクリーム」(탄크림) 광고 전략</h3>
+          <p class="text-xs text-slate-500">たるみケア 포지셔닝, 실패 진단, 헤드라인 카피, 채널 전략</p>
+          <div class="mt-2 text-xs font-bold text-rose-500">대시보드 열기 →</div>
+        </a>
+        <a href="./boh-gelmist/" class="card-link block bg-slate-50 border border-slate-200 rounded-xl p-4">
+          <h3 class="font-bold mb-1">콜라겐 겔미스트(ジェリーミスト) 리스닝마인드</h3>
+          <p class="text-xs text-slate-500">검색량 추이, 탐색 패턴 클러스터, CEP 10종, UGC 방향성</p>
+          <div class="mt-2 text-xs font-bold text-rose-500">대시보드 열기 →</div>
+        </a>
+        <a href="./boh-nadcream/" class="card-link block bg-slate-50 border border-slate-200 rounded-xl p-4">
+          <h3 class="font-bold mb-1">NAD크림(NADクリーム) 리스닝마인드</h3>
+          <p class="text-xs text-slate-500">NAD 성분 관심도 분석, CEP 9종, UGC 방향성</p>
+          <div class="mt-2 text-xs font-bold text-rose-500">대시보드 열기 →</div>
+        </a>
+        <a href="https://japan-eyecream-dashboard.vercel.app/" target="_blank" rel="noopener" class="card-link block bg-slate-50 border border-slate-200 rounded-xl p-4">
+          <h3 class="font-bold mb-1">아이크림 일본 진출 전략 <span class="text-slate-400 text-xs font-normal">(별도 사이트)</span></h3>
+          <p class="text-xs text-slate-500">검색 인사이트, 경쟁 환경, 포지셔닝, 채널·실행 플랜, 케이스 스터디</p>
+          <div class="mt-2 text-xs font-bold text-rose-500">대시보드 열기 ↗</div>
+        </a>
+      </div>
+    </div>
   </div>
+
+  <!-- WM -->
+  <div class="brand-card bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+    <button class="brand-head w-full flex items-center justify-between gap-3 p-6 text-left">
+      <div>
+        <div class="text-xs font-bold text-rose-500 uppercase tracking-wider mb-1">WM · Wakemake</div>
+        <h2 class="text-lg font-extrabold">웨이크메이크 — 베이스 메이크업</h2>
+        <p class="text-sm text-slate-500 mt-1">베이스 메이크업 리스닝마인드 대시보드</p>
+      </div>
+      <span class="brand-chevron text-slate-400 text-xl shrink-0">▼</span>
+    </button>
+    <div class="brand-products px-6 pb-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <a href="./olive-young-pb/?tab=base" class="card-link block bg-slate-50 border border-slate-200 rounded-xl p-4">
+          <h3 class="font-bold mb-1">베이스 메이크업(Wakemake) 반등포인트</h3>
+          <p class="text-xs text-slate-500">SKU별 검색 트렌드, CEP 9종 분석, 검색 여정 맵, 반등포인트 카피</p>
+          <div class="mt-2 text-xs font-bold text-rose-500">대시보드 열기 →</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CG -->
+  <div class="brand-card bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+    <button class="brand-head w-full flex items-center justify-between gap-3 p-6 text-left">
+      <div>
+        <div class="text-xs font-bold text-rose-500 uppercase tracking-wider mb-1">CG · Colorgram</div>
+        <h2 class="text-lg font-extrabold">컬러그램 — 립 메이크업</h2>
+        <p class="text-sm text-slate-500 mt-1">립 틴트 리스닝마인드 대시보드</p>
+      </div>
+      <span class="brand-chevron text-slate-400 text-xl shrink-0">▼</span>
+    </button>
+    <div class="brand-products px-6 pb-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <a href="./olive-young-pb/?tab=lip" class="card-link block bg-slate-50 border border-slate-200 rounded-xl p-4">
+          <h3 class="font-bold mb-1">립 틴트(Colorgram) 반등포인트</h3>
+          <p class="text-xs text-slate-500">SKU별 검색 트렌드, CEP 10종 분석, 검색 여정 맵, 반등포인트 카피</p>
+          <div class="mt-2 text-xs font-bold text-rose-500">대시보드 열기 →</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
 </main>
+
+<script>
+document.querySelectorAll('.brand-head').forEach(head => {
+  head.addEventListener('click', () => head.closest('.brand-card').classList.toggle('open'));
+});
+</script>
 
 </body>
 </html>

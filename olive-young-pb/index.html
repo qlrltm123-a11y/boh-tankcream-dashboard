@@ -29,10 +29,17 @@
   <div class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-2 overflow-x-auto text-xs whitespace-nowrap">
     <a href="../" class="text-slate-400 hover:text-rose-500 font-bold shrink-0">← 홈</a>
     <span class="text-slate-200">|</span>
-    <a href="../boh-tankcream/" class="text-slate-500 hover:text-rose-500 hover:bg-rose-50 rounded px-2 py-1 shrink-0 transition-colors">朝ちゅる 타크림</a>
-    <span class="text-rose-500 font-bold bg-rose-50 rounded px-2 py-1 shrink-0">색조</span>
-    <a href="../boh-gelmist/" class="text-slate-500 hover:text-rose-500 hover:bg-rose-50 rounded px-2 py-1 shrink-0 transition-colors">콜라겐 겔미스트</a>
+    <span class="text-slate-400 font-bold shrink-0">BOH</span>
+    <a href="../boh-tankcream/" class="text-slate-500 hover:text-rose-500 hover:bg-rose-50 rounded px-2 py-1 shrink-0 transition-colors">타크림</a>
+    <a href="../boh-gelmist/" class="text-slate-500 hover:text-rose-500 hover:bg-rose-50 rounded px-2 py-1 shrink-0 transition-colors">겔미스트</a>
     <a href="../boh-nadcream/" class="text-slate-500 hover:text-rose-500 hover:bg-rose-50 rounded px-2 py-1 shrink-0 transition-colors">NAD크림</a>
+    <a href="https://japan-eyecream-dashboard.vercel.app/" target="_blank" rel="noopener" class="text-slate-500 hover:text-rose-500 hover:bg-rose-50 rounded px-2 py-1 shrink-0 transition-colors">아이크림 ↗</a>
+    <span class="text-slate-200">|</span>
+    <span class="text-slate-400 font-bold shrink-0">WM</span>
+    <a href="#" data-tab-link="base" class="text-slate-500 hover:text-rose-500 hover:bg-rose-50 rounded px-2 py-1 shrink-0 transition-colors">베이스</a>
+    <span class="text-slate-200">|</span>
+    <span class="text-slate-400 font-bold shrink-0">CG</span>
+    <a href="#" data-tab-link="lip" class="text-slate-500 hover:text-rose-500 hover:bg-rose-50 rounded px-2 py-1 shrink-0 transition-colors">립틴트</a>
   </div>
 </nav>
 
@@ -514,12 +521,26 @@ renderCeps(lipCeps, 'lip-cep-list');
 renderCeps(baseCeps, 'base-cep-list');
 
 // Tabs
+function selectTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    const isActive = b.dataset.tab === tab;
+    b.classList.toggle('active', isActive);
+    b.classList.toggle('text-slate-500', !isActive);
+  });
+  document.getElementById('tab-lip').classList.toggle('hidden', tab !== 'lip');
+  document.getElementById('tab-base').classList.toggle('hidden', tab !== 'base');
+}
 document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.classList.add('text-slate-500'); });
-    btn.classList.add('active'); btn.classList.remove('text-slate-500');
-    document.getElementById('tab-lip').classList.toggle('hidden', btn.dataset.tab !== 'lip');
-    document.getElementById('tab-base').classList.toggle('hidden', btn.dataset.tab !== 'base');
+  btn.addEventListener('click', () => selectTab(btn.dataset.tab));
+});
+const initialTab = new URLSearchParams(window.location.search).get('tab');
+if (initialTab === 'base' || initialTab === 'lip') selectTab(initialTab);
+
+document.querySelectorAll('[data-tab-link]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    selectTab(link.dataset.tabLink);
+    window.scrollTo({ top: document.getElementById('tab-' + link.dataset.tabLink).offsetTop - 80, behavior: 'smooth' });
   });
 });
 </script>
