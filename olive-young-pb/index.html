@@ -9,20 +9,24 @@
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Noto Sans JP", sans-serif; }
   .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 1.25rem; }
   .badge { display:inline-block; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 999px; }
+  ::-webkit-scrollbar { height: 8px; }
   .tab-btn.active { background:#fff; color:#e11d48; border-color:#e11d48; }
   .cep-body { display:none; }
   .cep-card.open .cep-body { display:block; }
   .cep-card.open .chevron { transform: rotate(180deg); }
   .chevron { transition: transform .2s; }
-  pre { white-space: pre-wrap; font-family: inherit; }
+  pre { white-space: pre-wrap; word-break: break-word; font-family: inherit; }
 </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
 
 <header class="bg-gradient-to-r from-rose-500 to-pink-500 text-white sticky top-0 z-50 shadow">
-  <div class="max-w-7xl mx-auto px-4 py-4">
-    <div class="text-xs uppercase tracking-wider opacity-80">올리브영 PB · 일본 리스닝마인드 조사</div>
-    <h1 class="text-xl md:text-2xl font-extrabold">립 메이크업(Colorgram) &amp; 베이스 메이크업(Wakemake) 반등포인트 대시보드</h1>
+  <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-1">
+    <div>
+      <div class="text-xs uppercase tracking-wider opacity-80">올리브영 PB · 일본 리스닝마인드 조사</div>
+      <h1 class="text-xl md:text-2xl font-extrabold">립 메이크업(Colorgram) &amp; 베이스 메이크업(Wakemake) 반등포인트 대시보드</h1>
+    </div>
+    <div class="text-xs opacity-90">작성일 2026-06-15 · 리스닝마인드 조사 기반</div>
   </div>
 </header>
 <nav class="bg-white border-b border-slate-200 shadow-sm">
@@ -45,15 +49,23 @@
 
 <main class="max-w-7xl mx-auto px-4 py-6 space-y-8">
 
-  <!-- 처음 보는 분을 위한 안내 -->
-  <section class="card bg-sky-50 border-sky-100 text-sm leading-relaxed">
-    <div class="font-bold text-sky-700 mb-2">📖 이 대시보드 보는 법 (마케팅 처음이신 분도 OK)</div>
-    <ul class="list-disc list-inside space-y-1 text-slate-600">
-      <li><b>CEP(Category Entry Point, 카테고리 진입 시점)</b>: 소비자가 "이런 상황이라면 이 제품이 필요해!"라고 떠올리는 구체적인 순간을 말합니다. 예) "장마철 습한 날 메이크업이 무너질까봐 걱정될 때"</li>
-      <li><b>SKU(Stock Keeping Unit)</b>: 같은 카테고리(예: 립틴트) 안에서 서로 다른 특징을 가진 개별 제품을 의미합니다.</li>
-      <li><b>반등포인트</b>: 매출이 정체된 제품을 다시 끌어올릴 수 있는 메시지/포지셔닝 아이디어입니다.</li>
-      <li>각 CEP 카드를 클릭하면 "어떤 상황 → 어떤 제품 강점 → 어떤 광고 문구로 연결할지"까지 한 번에 펼쳐집니다.</li>
-    </ul>
+  <!-- 용어 안내 -->
+  <section class="card bg-slate-900 text-white">
+    <div class="text-xs font-bold text-rose-300 mb-2">📖 이 대시보드 보는 법 (용어 안내)</div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+      <div class="rounded-lg bg-white/10 p-3">
+        <div class="font-bold text-rose-200 mb-1">CEP / SKU란?</div>
+        <p class="text-slate-300 leading-relaxed"><b>CEP(카테고리 진입 시점)</b>는 소비자가 "이런 상황이라면 이 제품이 필요해!"라고 떠올리는 구체적인 순간을 말해요. 예: "장마철 습한 날 메이크업이 무너질까봐 걱정될 때". <b>SKU</b>는 같은 카테고리 안에서 서로 다른 특징을 가진 개별 제품을 의미해요.</p>
+      </div>
+      <div class="rounded-lg bg-white/10 p-3">
+        <div class="font-bold text-rose-200 mb-1">UGC / 반등포인트란?</div>
+        <p class="text-slate-300 leading-relaxed"><b>UGC</b>는 소비자가 SNS·후기에 직접 올릴 법한 실제 사용 후기·홍보 문구예요. <b>반등포인트</b>는 매출이 정체된 제품을 다시 끌어올릴 수 있는 메시지·포지셔닝 아이디어를 말해요.</p>
+      </div>
+      <div class="rounded-lg bg-white/10 p-3">
+        <div class="font-bold text-rose-200 mb-1">일본어 표기 방식</div>
+        <p class="text-slate-300 leading-relaxed">일본 소비자가 실제로 검색·공감할 일본어 문구 뒤에 <b>한국어 번역을 "→"로 병기</b>했습니다. 각 CEP 카드를 클릭하면 상황 → 제품 강점 → 광고 문구까지 한 번에 펼쳐집니다.</p>
+      </div>
+    </div>
   </section>
 
   <!-- 전체 핵심 인사이트 -->
